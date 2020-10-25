@@ -1,22 +1,22 @@
 # SpringBootUtils
 基于SpringBoot 的 工具集
 
-###各部分功能说明
-####一、SpringBoot异步任务的基本使用
-#####1）ExecutorConfig 自定义的Executor:
+### 各部分功能说明
+#### 一、SpringBoot异步任务的基本使用
+##### 1）ExecutorConfig 自定义的Executor:
 ```
 - @EnableAsync 开启Spring异步支持
 - @Bean("taskExecutor") 指定默认任务执行器
 ```
-#####2）AsyncTaskService 异步任务方法接口:
+##### 2）AsyncTaskService 异步任务方法接口:
 
-#####3）AsyncTaskServiceImpl 异步任务方法实现:
+##### 3）AsyncTaskServiceImpl 异步任务方法实现:
 ```
 - @Async("myAsync") 使用自定义myAsync任务执行器
 - @Async 使用默认taskExecutor任务执行器
 ```
-#####4）AsyncTaskController 异步任务接口
-#####*** 需要注意的问题
+##### 4）AsyncTaskController 异步任务接口
+##### *** 需要注意的问题
 ```
 需要注意的问题:
 需要注意的问题一：异步方法的定义位置问题
@@ -26,8 +26,8 @@
 需要注意的问题三：异步方法必须是实例的
 因为静态方法不能被override重写，因为@Async异步方法的实现原理是通过注入一个代理类到Bean中，该代理类集成这个Bean并且需要重写这个异步方法，所以需要是实例方法
 ```
-####二、Swagger3 的基本使用
-#####1）pom.xml
+#### 二、Swagger3 的基本使用
+##### 1）pom.xml
 ```$xslt
 <dependency>
     <groupId>io.springfox</groupId>
@@ -35,12 +35,12 @@
     <version>3.0.0</version>
 </dependency>
 ```
-#####2）Swagger3Config Swagger3配置文件
-#####*** 其他说明
+##### 2）Swagger3Config Swagger3配置文件
+##### *** 其他说明
 ```$xslt
 - Swagger3的访问路径为port/swagger-ui/ 或port/swagger-ui/index.html
 ```
-#####3）Swagger3注解说明
+##### 3）Swagger3注解说明
 ```$xslt
 @Api：用在请求的类上，表示对类的说明
     tags="说明该类的作用，可以在UI界面上看到的注解"
@@ -75,8 +75,8 @@
             请求参数无法使用@ApiImplicitParam注解进行描述的时候）
     @ApiModelProperty：用在属性上，描述响应类的属性
 ```
-####三、Minio 文件系统的基本使用
-#####1）pom.xml
+#### 三、Minio 文件系统的基本使用
+##### 1）pom.xml
 ```
 <dependency>
     <groupId>org.apache.commons</groupId>
@@ -96,7 +96,7 @@
     <version>7.0.2</version>
 </dependency>
 ```
-#####2）application.yml
+##### 2）application.yml
 ```
 minio:
   # minio服务地址
@@ -111,12 +111,12 @@ minio:
   # 默认桶
   bucketName: "hope-bucket"
 ```
-#####3）MinioUtil minio的工具方法类
-#####4）MinioConfig minio配置文件
-#####5）MinioService minio基本操作接口
-#####6）MinioServiceImpl minio基本操作实现
-#####7）MinioController minio上传，下载测试接口
-#####8）Minio Docker部署
+##### 3）MinioUtil minio的工具方法类
+##### 4）MinioConfig minio配置文件
+##### 5）MinioService minio基本操作接口
+##### 6）MinioServiceImpl minio基本操作实现
+##### 7）MinioController minio上传，下载测试接口
+##### 8）Minio Docker部署
 ```$xslt
 docker run -d -p 9000:9000 --name myminio --restart=always \
   -e "MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE" \
