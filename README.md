@@ -128,6 +128,11 @@ docker run -d -p 9000:9000 --name myminio --restart=always \
 #### 四、Kafka的基本使用
 ##### 1）pom.xml
 ```
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.2.42</version>
+</dependency>
 <!--Kafka-->
 <dependency>
     <groupId>org.springframework.kafka</groupId>

@@ -1,5 +1,7 @@
 package com.embeddedmeng.easywork;
 
+import com.alibaba.fastjson.JSON;
+import com.embeddedmeng.easywork.dto.KafkaMessage;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +22,8 @@ public class EasyworkApplication {
      */
     @KafkaListener(topics = "demo")
     public void listen (ConsumerRecord<?, ?> record){
+        KafkaMessage kafkaMessage = JSON.parseObject((String) record.value(), KafkaMessage.class);
+        System.out.println(kafkaMessage.toString());
         System.out.printf("topic is %s, offset is %d, value is %s \n", record.topic(), record.offset(), record.value());
     }
 
