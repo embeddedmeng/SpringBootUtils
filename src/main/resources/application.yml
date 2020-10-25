@@ -1,8 +1,8 @@
-# ÅäÖÃ·şÎñ¶Ë¿ÚºÅ
+# é…ç½®æœåŠ¡ç«¯å£å·
 server:
   port: 9999
 
-# ÅäÖÃminio
+# é…ç½®minio
 minio:
   endpoint: 172.20.110.154
   port: 9000
@@ -10,4 +10,18 @@ minio:
   secretKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
   secure: false
   bucketName: hope-bucket
+
+spring:
+  # é…ç½®kafka
+  kafka:
+    bootstrap-servers: 172.20.110.222:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: default_consumer_group #ç¾¤ç»„ID
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 

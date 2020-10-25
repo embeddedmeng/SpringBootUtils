@@ -99,9 +99,9 @@
 ##### 2）application.yml
 ```
 minio:
-  # minio服务地址
-  endpoint: 172.20.110.154
-  # minio端口 
+  # minio服务地址(使用时替换成minio部署地址)
+  endpoint: localhost
+  # minio端口(使用时替换成minio部署端口) 
   port: 9000 
   # 配置登录key 
   accessKey: AKIAIOSFODNN7EXAMPLE
@@ -125,6 +125,40 @@ docker run -d -p 9000:9000 --name myminio --restart=always \
 
 其他部署方式可参考：https://docs.min.io/cn/
 ```
+#### 四、Kafka的基本使用
+##### 1）pom.xml
+```
+<!--Kafka-->
+<dependency>
+    <groupId>org.springframework.kafka</groupId>
+    <artifactId>spring-kafka</artifactId>
+</dependency>
+```
+##### 2）application.yml
+```
+spring:
+  # 配置kafka
+  kafka:
+    # kafka服务地址(使用时替换成kafka部署地址:端口)
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: default_consumer_group #群组ID
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+```
+##### 3）KafkaController 生产者，发送消息通知
+##### 4）EasyworkApplication 注册消费者
+```
+@KafkaListener(topics = "demo") 订阅名称为demo的topic，接收消息并处理
+```
+#### 五、Redis的基本使用
+#### 六、MongoDB的基本使用
+#### 七、ElasticSearch的基本使用
 
 
 
