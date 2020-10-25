@@ -1,2 +1,13 @@
+# ÅäÖÃ·şÎñ¶Ë¿ÚºÅ
 server:
   port: 9999
+
+# ÅäÖÃminio
+minio:
+  endpoint: 172.20.110.154
+  port: 9000
+  accessKey: AKIAIOSFODNN7EXAMPLE
+  secretKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  secure: false
+  bucketName: hope-bucket
+
