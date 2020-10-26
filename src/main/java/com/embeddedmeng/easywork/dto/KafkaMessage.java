@@ -2,6 +2,9 @@ package com.embeddedmeng.easywork.dto;
 
 public class KafkaMessage {
 
+    public KafkaMessage() {
+    }
+
     private String messageType;
     private String messageContent;
 

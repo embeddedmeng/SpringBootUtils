@@ -1,5 +1,6 @@
 package com.embeddedmeng.easywork.controller;
 
+import com.embeddedmeng.easywork.controller.base.BaseController;
 import com.embeddedmeng.easywork.service.AsyncTaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,9 +18,7 @@ import java.util.concurrent.Future;
 @Api(tags = "异步任务")
 @RestController
 @RequestMapping(value = "/task")
-public class AsyncTaskController {
-
-    private static Logger log = LoggerFactory.getLogger(AsyncTaskController.class);
+public class AsyncTaskController extends BaseController {
 
     @Resource
     private AsyncTaskService asyncTask;
@@ -33,13 +32,13 @@ public class AsyncTaskController {
 
         while(true) {
             if(task1.isDone() && task2.isDone()) {
-                log.info("Task1 result: {}", task1.get());
-                log.info("Task2 result: {}", task2.get());
+                logger.info("Task1 result: {}", task1.get());
+                logger.info("Task2 result: {}", task2.get());
                 break;
             }
             Thread.sleep(1000);
         }
-        log.info("耗时:{} ms",System.currentTimeMillis()-time);
+        logger.info("耗时:{} ms",System.currentTimeMillis()-time);
         return "success";
     }
 
